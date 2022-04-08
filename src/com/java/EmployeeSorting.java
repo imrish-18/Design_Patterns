@@ -119,6 +119,7 @@ public class EmployeeSorting{
 	    System.out.println("values in map");
 	    System.out.println(map);
 	    Set<Entry<Integer, EmployeeSorting>> entry=map.entrySet();
+	    entry.forEach(res->System.out.println(res.getKey()+" "+res.getValue()));
 	   
 	    map.entrySet().stream().forEach(res->System.out.println(res.getKey()+" "+res.getValue()));;
 	    
@@ -126,3 +127,4 @@ public class EmployeeSorting{
 	}
 
 }
+ 
