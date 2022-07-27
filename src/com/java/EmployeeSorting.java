@@ -93,9 +93,9 @@ public class EmployeeSorting{
         
 		
 		employeeList.add(new EmployeeSorting(111, "Jiya Brein", 32, "Female", "HR", 2011, 25000.0));
-		employeeList.add(new EmployeeSorting(122, "Paul Niksui", 25, "Male", "Sales And Marketing", 2015, 13500.0));
-		employeeList.add(new EmployeeSorting(133, "Martin Theron", 29, "Male", "Infrastructure", 2012, 18000.0));
-		employeeList.add(new EmployeeSorting(144, "Murali Gowda", 28, "Male", "Product Development", 2014, 32500.0));
+		employeeList.add(new EmployeeSorting(122, "Paul Niksui", 32, "Male", "Sales And Marketing", 2015, 13500.0));
+		employeeList.add(new EmployeeSorting(133, "Martin Theron", 25, "Male", "Infrastructure", 2012, 18000.0));
+		employeeList.add(new EmployeeSorting(144, "Murali Gowda", 25, "Male", "Product Development", 2014, 32500.0));
 	employeeList.add(new EmployeeSorting(155, "Nima Roy", 27, "Female", "HR", 2013, 22700.0));
       
  employeeList.sort(Comparator.comparing(EmployeeSorting::getId).thenComparing(EmployeeSorting::getSalary));
@@ -114,14 +114,25 @@ public class EmployeeSorting{
 //				 .map(EmployeeSorting::getSalary)
 //				 .max(Double::compare).get();
 //	    System.out.println(maxSalary);t
-        
- 
-	    System.out.println("values in map");
-	    System.out.println(map);
-	    Set<Entry<Integer, EmployeeSorting>> entry=map.entrySet();
-	    entry.forEach(res->System.out.println(res.getKey()+" "+res.getValue()));
-	   
-	    map.entrySet().stream().forEach(res->System.out.println(res.getKey()+" "+res.getValue()));;
+//        
+List<String> string= map.entrySet().stream().filter(res->res.getValue().getGender()=="Male").
+ map(res->res.getValue().getName()).collect(Collectors.toList());
+Map<Integer,List<EmployeeSorting>> empMap=employeeList.stream().collect(Collectors.groupingBy(EmployeeSorting::getAge));
+employeeList.stream().filter(res->(res.gender.equals("Male") && res.getAge()>25)).forEach(System.out::println);;
+System.out.println(empMap);
+//Optional<EmployeeSorting> op=employeeList.stream().sorted(Comparator.comparingDouble(EmployeeSorting::getSalary).reversed()).limit(2).skip(0).findFirst();
+//
+//Optional<EmployeeSorting> emp = employeeList.stream()
+//        .collect(Collectors.maxBy(Comparator.comparingDouble(EmployeeSorting::getSalary)));
+//System.out.println(emp);
+//System.out.println(op);
+//	    System.out.println("values in map");;
+//	    System.out.println(map);
+//	    Set<Entry<Integer, EmployeeSorting>> entry=map.entrySet();
+//	    entry.forEach(res->System.out.println(res.getKey()+" "+res.getValue()));
+//	   
+//	    map.entrySet().stream().forEach(res->System.out.println(res.getKey()+" "+res.getValue()));;
+	    
 	    
 
 	}
